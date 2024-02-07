@@ -11,6 +11,9 @@
 		5D85A4BA2B7346950055A36D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A4B92B7346950055A36D /* ContentView.swift */; };
 		5D85A4BC2B7346960055A36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D85A4BB2B7346960055A36D /* Assets.xcassets */; };
 		5D85A4BF2B7346960055A36D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D85A4BE2B7346960055A36D /* Preview Assets.xcassets */; };
+		5D85A4D42B734A180055A36D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5D85A4D32B734A180055A36D /* Alamofire */; };
+		5D85A4D72B734A2D0055A36D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5D85A4D62B734A2D0055A36D /* SDWebImageSwiftUI */; };
+		5D85A4DA2B734A4E0055A36D /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5D85A4D92B734A4E0055A36D /* ObjectMapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D85A4DA2B734A4E0055A36D /* ObjectMapper in Frameworks */,
+				5D85A4D72B734A2D0055A36D /* SDWebImageSwiftUI in Frameworks */,
+				5D85A4D42B734A180055A36D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,9 +57,9 @@
 		5D85A4B62B7346950055A36D /* Xisflix */ = {
 			isa = PBXGroup;
 			children = (
-				5D85A4B72B7346950055A36D /* XisflixApp.swift */,
-				5D85A4B92B7346950055A36D /* ContentView.swift */,
-				5D85A4BB2B7346960055A36D /* Assets.xcassets */,
+				5D85A4C52B7348760055A36D /* App */,
+				5D85A4C72B7348810055A36D /* Module */,
+				5D85A4C62B7348790055A36D /* Core */,
 				5D85A4BD2B7346960055A36D /* Preview Content */,
 			);
 			path = Xisflix;
@@ -65,6 +71,110 @@
 				5D85A4BE2B7346960055A36D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5D85A4C52B7348760055A36D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4C92B7348930055A36D /* Main */,
+				5D85A4C82B73488B0055A36D /* Resource */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5D85A4C62B7348790055A36D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4CC2B7348B60055A36D /* Domain */,
+				5D85A4CB2B7348AF0055A36D /* Data */,
+				5D85A4CD2B7348C10055A36D /* Utils */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5D85A4C72B7348810055A36D /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4CA2B7348A90055A36D /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		5D85A4C82B73488B0055A36D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4BB2B7346960055A36D /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		5D85A4C92B7348930055A36D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4B72B7346950055A36D /* XisflixApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5D85A4CA2B7348A90055A36D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4B92B7346950055A36D /* ContentView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5D85A4CB2B7348AF0055A36D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4D12B7348E10055A36D /* Service */,
+				5D85A4D02B7348DA0055A36D /* APIs */,
+				5D85A4CE2B7348CC0055A36D /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5D85A4CC2B7348B60055A36D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5D85A4CD2B7348C10055A36D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5D85A4CE2B7348CC0055A36D /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				5D85A4CF2B7348D40055A36D /* Remote */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		5D85A4CF2B7348D40055A36D /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		5D85A4D02B7348DA0055A36D /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		5D85A4D12B7348E10055A36D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +193,11 @@
 			dependencies = (
 			);
 			name = Xisflix;
+			packageProductDependencies = (
+				5D85A4D32B734A180055A36D /* Alamofire */,
+				5D85A4D62B734A2D0055A36D /* SDWebImageSwiftUI */,
+				5D85A4D92B734A4E0055A36D /* ObjectMapper */,
+			);
 			productName = Xisflix;
 			productReference = 5D85A4B42B7346950055A36D /* Xisflix.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +226,11 @@
 				Base,
 			);
 			mainGroup = 5D85A4AB2B7346950055A36D;
+			packageReferences = (
+				5D85A4D22B734A180055A36D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				5D85A4D52B734A2D0055A36D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				5D85A4D82B734A4E0055A36D /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+			);
 			productRefGroup = 5D85A4B52B7346950055A36D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,6 +464,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D85A4D22B734A180055A36D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		5D85A4D52B734A2D0055A36D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
+		5D85A4D82B734A4E0055A36D /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D85A4D32B734A180055A36D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D85A4D22B734A180055A36D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		5D85A4D62B734A2D0055A36D /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D85A4D52B734A2D0055A36D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		5D85A4D92B734A4E0055A36D /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D85A4D82B734A4E0055A36D /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D85A4AC2B7346950055A36D /* Project object */;
 }
