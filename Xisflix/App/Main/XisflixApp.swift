@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct XisflixApp: App {
+    
+    let assembler: Assembler = AppAssembler.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(vm: assembler.resolve())
         }
     }
 }
