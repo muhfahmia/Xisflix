@@ -12,9 +12,7 @@ struct HomeView: View {
     
     @StateObject var vm: HomePresenter
     @State var movieSelected: Movie?
-    @State var showDetail: Bool = false
-    @State var showType: Bool = false
-    @State private var hideBar = false
+    @State var movieTitleType: String = "Popular"
     
     let router: HomeRouter
     
@@ -44,7 +42,6 @@ struct HomeView: View {
                                             .frame(width: contentWidth, height: height)
                                             .onTapGesture {
                                                 movieSelected = movie
-                                                showDetail = true
                                             }
                                     }
                                 }
@@ -68,14 +65,13 @@ struct HomeView: View {
                                             .frame(width: width, height: height+38)
                                             .onTapGesture {
                                                 movieSelected = movie
-                                                showDetail = true
                                             }
                                     }
                                 }
                             }
                             .padding(.horizontal, 10)
                             
-                            Text("Popular")
+                            Text(movieTitleType)
                                 .font(.title)
                                 .bold()
                                 .padding(.top, 15)
@@ -92,7 +88,6 @@ struct HomeView: View {
                                         .frame(width: width, height: height+38)
                                         .onTapGesture {
                                             movieSelected = movie
-                                            showDetail = true
                                         }
                                 }
                             }
@@ -108,16 +103,27 @@ struct HomeView: View {
                     vm.getMovieListPopular()
                 }
             }
-            .navigationTitle("XisFlix")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
+                    
                     Button(action: {
-                        print("navigate to menu")
+                        if vm.movieParamPopular.pathType == .popular {
+                            movieTitleType = "Top Rated"
+                            vm.movieParamPopular.pathType = .topRated
+                            vm.getMovieListPopular()
+                        } else {
+                            vm.movieParamPopular.pathType = .popular
+                            movieTitleType = "Popular"
+                            vm.getMovieListPopular()
+                        }
                     }, label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.white)
                             .font(.headline)
+                        Text("XisFlix")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
                     })
                 }
                 

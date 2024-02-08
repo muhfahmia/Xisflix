@@ -9,7 +9,7 @@ import Foundation
 
 
 struct MovieListParameter: Encodable {
-    let pathType: PathTypeMovie
+    var pathType: PathTypeMovie
     let apiKey: String
     let page: Int
     

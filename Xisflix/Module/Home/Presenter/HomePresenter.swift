@@ -52,6 +52,7 @@ class HomePresenter: ObservableObject {
     }
     
     func getMovieListPopular() {
+        moviePopular = .loading
         movieListUseCase.list(param: movieParamPopular)
         .receive(on: RunLoop.main)
         .sink(receiveCompletion: { result in

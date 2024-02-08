@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @Environment(\.dismiss) var dismiss
     @StateObject var vm: SearchPresenter
     @State var movieSelected: Movie?
     @State private var query: String = ""
@@ -21,30 +20,25 @@ struct SearchView: View {
             GeometryReader { proxy in
                 VStack {
                     HStack {
-                        Image(systemName: "arrow.backward")
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search your movie", text: $query, onCommit: {
+                            vm.setMovieQuery(query: query.lowercased())
+                            vm.getMovieSearchList()
+                        })
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                            .keyboardType(.default)
+                        Image(systemName: "x.circle")
                             .onTapGesture {
-                                dismiss()
+                                query = ""
                             }
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            TextField("Search your movie", text: $query, onCommit: {
-                                vm.setMovieQuery(query: query.lowercased())
-                                vm.getMovieSearchList()
-                            })
-                                .textInputAutocapitalization(.never)
-                                .autocorrectionDisabled()
-                                .keyboardType(.default)
-                            Image(systemName: "x.circle")
-                                .onTapGesture {
-                                    query = ""
-                                }
-                        }
-                        .padding()
-                        .overlay( /// apply a rounded border
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                        )
                     }
+                    .padding()
+                    .overlay( /// apply a rounded border
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                    )
+                    
                     
                     if vm.movieSearch.isLoading {
                         progressView
@@ -93,7 +87,7 @@ struct SearchView: View {
                 .fullScreenCover(item: $movieSelected, content: { item in
                     router.routeToDetail(movie: item)
                 })
-                .hiddenNavigationBarStyle()
+                .navigationBarBackButtonHidden()
             }
         }
     }
