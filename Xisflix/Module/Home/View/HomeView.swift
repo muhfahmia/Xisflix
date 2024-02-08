@@ -11,6 +11,10 @@ import SDWebImageSwiftUI
 struct HomeView: View {
     
     @ObservedObject var vm: HomePresenter
+    @State var movieSelected: Movie?
+    @State var showDetail: Bool = false
+    
+    let router: HomeRouter
     
     var body: some View {
         NavigationView {
@@ -36,6 +40,10 @@ struct HomeView: View {
                                     ForEach(vm.movieTrending.value ?? [Movie](), id: \.id) { movie in
                                         MovieHeadlineCard(heightImage: height, movie: movie)
                                             .frame(width: contentWidth, height: height)
+                                            .onTapGesture {
+                                                movieSelected = movie
+                                                showDetail = true
+                                            }
                                     }
                                 }
                                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -56,6 +64,10 @@ struct HomeView: View {
                                     ForEach(vm.movieID.value ?? [Movie](), id: \.id) { movie in
                                        MovieCard(movie: movie, heightImage: height)
                                             .frame(width: width, height: height+38)
+                                            .onTapGesture {
+                                                movieSelected = movie
+                                                showDetail = true
+                                            }
                                     }
                                 }
                             }
@@ -76,11 +88,18 @@ struct HomeView: View {
                                 ForEach(vm.moviePopular.value ?? [Movie](), id: \.id) { movie in
                                    MovieCard(movie: movie, heightImage: height)
                                         .frame(width: width, height: height+38)
+                                        .onTapGesture {
+                                            movieSelected = movie
+                                            showDetail = true
+                                        }
                                 }
                             }
                         }
                     }
                 }
+                .fullScreenCover(item: $movieSelected, content: { item in
+                    router.routeToDetail(movie: item)
+                })
                 .onAppear {
                     vm.getMovieListTrending()
                     vm.getMovieListID()
@@ -117,5 +136,6 @@ struct HomeView: View {
 #Preview {
     let assembler: Assembler = AppAssembler.shared
     let presenter: HomePresenter = assembler.resolve()
-    return HomeView(vm: presenter)
+    let router: HomeRouter = assembler.resolve()
+    return HomeView(vm: presenter, router: router)
 }

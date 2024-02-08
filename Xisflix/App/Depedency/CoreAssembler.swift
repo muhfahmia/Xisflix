@@ -11,6 +11,7 @@ protocol CoreAssembler {
     func resolve() -> MovieDataSource
     func resolve() -> MovieRepository
     func resolve() -> MovieListUseCase
+    func resolve() -> MovieDetailUseCase
 }
 
 extension CoreAssembler where Self: Assembler {
@@ -24,5 +25,9 @@ extension CoreAssembler where Self: Assembler {
     
     func resolve() -> MovieListUseCase {
         MovieListInteractor(repository: resolve())
+    }
+    
+    func resolve() -> MovieDetailUseCase {
+        MovieDetailInteractor(repository: resolve())
     }
 }

@@ -20,9 +20,8 @@ struct Movie: Identifiable {
     var duration: Int = 0
     var country: String = ""
     var productionHouse: String = ""
-//    var _productionHouse: [MoviePH] = [MoviePH()]
-//    var trailer: MovieVideo = MovieVideo()
-//    var casts: [MovieCast] = []
+    var trailer: MovieVideo = MovieVideo()
+    var casts: [MovieCast] = []
     var rating: Double = 0.0
 }
 

@@ -14,7 +14,7 @@ struct XisflixApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView(vm: assembler.resolve())
+            HomeView(vm: assembler.resolve(), router: assembler.resolve())
         }
     }
 }

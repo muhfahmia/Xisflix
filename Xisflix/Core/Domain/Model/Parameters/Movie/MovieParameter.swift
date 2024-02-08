@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct MovieListParameter: Encodable {
     let pathType: PathTypeMovie
     let apiKey: String
@@ -52,4 +53,19 @@ struct MovieDiscoveryParameter: Encodable {
         self.releaseDate = releaseDate
     }
     
+}
+
+struct MovieDetailParameter: Encodable {
+    
+    var movieID: String
+    let apiKey: String
+    
+    enum CodingKeys: String, CodingKey {
+        case apiKey = "api_key"
+    }
+    
+    init(movieID: String, apiKey: String = Constants.apiKey) {
+        self.movieID = movieID
+        self.apiKey = apiKey
+    }
 }

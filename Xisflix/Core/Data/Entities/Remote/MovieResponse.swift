@@ -40,3 +40,61 @@ extension Movie: Mappable {
     }
     
 }
+
+extension MovieVideos: Mappable {
+
+    init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    mutating func mapping(map: Map) {
+        id      <- map["id"]
+        videos  <- map["results"]
+    }
+    
+}
+
+extension MovieVideo: Mappable {
+    
+    init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    mutating func mapping(map: Map) {
+        name        <- map["name"]
+        platform    <- map["site"]
+        keyPath     <- map["key"]
+        type        <- map["type"]
+        official    <- map["official"]
+    }
+    
+}
+
+extension MovieCasts: Mappable {
+    
+    init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    mutating func mapping(map: Map) {
+        movieID <- map["id"]
+        casts   <- map["cast"]
+    }
+    
+}
+
+extension MovieCast: Mappable {
+    
+    init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    mutating func mapping(map: Map) {
+        name            <- map["name"]
+        nameCharacter   <- map["character"]
+        departement     <- map["known_for_department"]
+        popularity      <- map["popularity"]
+        profilePath     <- map["profile_path"]
+    }
+    
+}
