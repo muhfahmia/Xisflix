@@ -22,7 +22,9 @@ struct DetailView: View {
             GeometryReader { proxy in
                 ZStack {
                     Color.background.ignoresSafeArea()
-                    if let movie = vm.movie.value {
+                    if vm.movie.isLoading {
+                        progressView
+                    } else if let movie = vm.movie.value {
                         ScrollView(showsIndicators: false) {
                             LazyVStack(alignment: .leading) {
                                 let keyYoutube = movie.trailer.keyPath
@@ -109,12 +111,14 @@ struct DetailView: View {
                             }
                             .frame(width: proxy.size.width)
                         }
-//                        .ignoresSafeArea(.all, edges: .top)
                         .navigationTitle("\(movie.title)")
                         .navigationBarTitleDisplayMode(.inline)
                     } else {
-                        progressView
+                        Text("Please retry your process")
+                            .font(.largeTitle)
+                            .bold()
                     }
+                    
                 }
                 .onAppear {
                     vm.getMovieDetail()

@@ -10,9 +10,11 @@ import SDWebImageSwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var vm: HomePresenter
+    @StateObject var vm: HomePresenter
     @State var movieSelected: Movie?
     @State var showDetail: Bool = false
+    @State var showType: Bool = false
+    @State private var hideBar = false
     
     let router: HomeRouter
     
@@ -120,8 +122,8 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        print("navigate to search")
+                    NavigationLink(destination: {
+                        router.routeToSearch()
                     }, label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.white)

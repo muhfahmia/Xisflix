@@ -14,6 +14,7 @@ enum MovieAPI {
     case detail(param: MovieDetailParameter)
     case videos(param: MovieDetailParameter)
     case credits(param: MovieDetailParameter)
+    case search(param: MovieSearchParameter)
 }
 
 extension MovieAPI: APIFactory {
@@ -34,6 +35,8 @@ extension MovieAPI: APIFactory {
             return param
         case .credits(let param):
             return param
+        case .search(let param):
+            return param
         }
     }
     
@@ -53,6 +56,8 @@ extension MovieAPI: APIFactory {
             return "movie/\(param.movieID)/videos"
         case .credits(let param):
             return "movie/\(param.movieID)/credits"
+        case .search(_):
+            return "search/movie"
         }
     }
 

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct HomeRouter {
+struct SearchRouter {
     
     private let assembler: Assembler
     
@@ -18,10 +18,6 @@ struct HomeRouter {
     
     func routeToDetail(movie: Movie) -> some View {
         return DetailView(vm: assembler.resolve(movie: movie))
-    }
-    
-    func routeToSearch() -> some View {
-        SearchView(vm: assembler.resolve(), router: assembler.resolve())
     }
     
 }

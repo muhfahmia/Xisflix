@@ -11,6 +11,7 @@ import Combine
 protocol MovieListUseCase {
     func list(param: MovieListParameter) -> AnyPublisher<[Movie], Error>
     func discovery(param: MovieDiscoveryParameter) -> AnyPublisher<[Movie], Error>
+    func search(param: MovieSearchParameter) -> AnyPublisher<[Movie], Error>
 }
 
 struct MovieListInteractor: MovieListUseCase {
@@ -27,6 +28,10 @@ struct MovieListInteractor: MovieListUseCase {
     
     func discovery(param: MovieDiscoveryParameter) -> AnyPublisher<[Movie], Error> {
         repository.discovery(param: param)
+    }
+    
+    func search(param: MovieSearchParameter) -> AnyPublisher<[Movie], Error> {
+        repository.search(param: param)
     }
     
 }

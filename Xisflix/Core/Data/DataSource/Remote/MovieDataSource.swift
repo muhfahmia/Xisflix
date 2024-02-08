@@ -15,6 +15,7 @@ protocol MovieDataSource {
     func detail(param: MovieDetailParameter) -> AnyPublisher<Movie, Error>
     func videos(param: MovieDetailParameter) -> AnyPublisher<MovieVideos, Error>
     func credits(param: MovieDetailParameter) -> AnyPublisher<MovieCasts, Error>
+    func search(param: MovieSearchParameter) -> AnyPublisher<Movies, Error>
 }
 
 struct DefaultMovieDataSource: MovieDataSource {
@@ -39,6 +40,10 @@ struct DefaultMovieDataSource: MovieDataSource {
     
     func credits(param: MovieDetailParameter) -> AnyPublisher<MovieCasts, Error> {
         network.request(baseAPI: MovieAPI.credits(param: param))
+    }
+    
+    func search(param: MovieSearchParameter) -> AnyPublisher<Movies, Error> {
+        network.request(baseAPI: MovieAPI.search(param: param))
     }
     
 }

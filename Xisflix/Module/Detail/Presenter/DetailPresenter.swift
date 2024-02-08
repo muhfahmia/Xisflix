@@ -26,6 +26,7 @@ class DetailPresenter: ObservableObject {
     }
     
     func getMovieDetail() {
+        movie = .loading
         detailUseCase.detail(param: movieDetailParam)
         .receive(on: RunLoop.main)
         .sink(receiveCompletion: { result in
@@ -35,7 +36,6 @@ class DetailPresenter: ObservableObject {
             }
         }, receiveValue: { [weak self] value in
             self?.movie = .success(data: value)
-            print("movie: \(value)")
         }).store(in: &cancellables)
     }
     

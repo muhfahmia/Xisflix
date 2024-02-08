@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Assembler: HomeAssembler, DetailAssembler, CoreAssembler {}
+protocol Assembler: HomeAssembler, DetailAssembler, SearchAssembler, CoreAssembler {}
 
 class AppAssembler: Assembler {
     static let shared = AppAssembler()

@@ -69,3 +69,20 @@ struct MovieDetailParameter: Encodable {
         self.apiKey = apiKey
     }
 }
+
+
+struct MovieSearchParameter: Encodable {
+    
+    var query: String
+    let apiKey: String
+    
+    enum CodingKeys: String, CodingKey {
+        case apiKey = "api_key"
+        case query
+    }
+    
+    init(query: String, apiKey: String = Constants.apiKey) {
+        self.query = query
+        self.apiKey = apiKey
+    }
+}
